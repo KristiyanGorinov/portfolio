@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* carousel */
 .carousel{
     height: 100vh;
@@ -12,6 +11,9 @@
     height: 100%;
     position: absolute;
     inset: 0 0 0 0;
+}
+.carousel .list .item picture{
+    display: contents;
 }
 .carousel .list .item img{
     width: 100%;
@@ -50,14 +52,61 @@
     gap: 5px;
     margin-top: 20px;
 }
-.carousel .list .item .buttons button{
-    border: none;
-    background-color: #eee;
-    letter-spacing: 3px;
+/* SEE MORE: a white pill in the panel's purple, next to the round pager buttons.
+   On hover it lifts, turns the page's accent orange and a light sweeps across it
+   (the same movement as the "Next" button on the home page). */
+.carousel .list .item .buttons a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    overflow: hidden;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #75248d;
+    font-size: 12.5px;
+    letter-spacing: 2px;
     font-family: Poppins;
-    font-weight: 500;
+    font-weight: 600;
+    text-shadow: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+    transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease, color .3s ease;
 }
-.carousel .list .item .buttons button:nth-child(2){
+.carousel .list .item .buttons a i{
+    font-size: 16px;
+    transition: transform .3s ease;
+}
+.carousel .list .item .buttons a::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45), transparent);
+    transition: left .5s ease;
+}
+.carousel .list .item .buttons a:hover{
+    transform: translateY(-3px);
+    background-color: #f1683a;
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+}
+.carousel .list .item .buttons a:hover::before{
+    left: 100%;
+}
+.carousel .list .item .buttons a:hover i{
+    transform: translateX(4px);
+}
+.carousel .list .item .buttons a:active{
+    transform: translateY(-1px);
+}
+.carousel .list .item .buttons a:focus-visible{
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+.carousel .list .item .buttons a:nth-child(2){
     background-color: transparent;
     border: 1px solid #fff;
     color: #eee;
@@ -124,6 +173,10 @@
     background-color: #fff;
     color: #000;
 }
+.slide-count,
+.timeline{
+    display: none;
+}
 
 /* animation */
 .carousel .list .item:nth-child(1){
@@ -144,10 +197,6 @@
     animation: showContent .5s 1s linear 1 forwards;
 }
 
-.mobile-img {
-    display: none;
-}
-
 .container{
     display: flex;
     flex-direction: column;
@@ -159,7 +208,7 @@
 
 .container .heading{
     width: 50%;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 
 .container .heading h3{
@@ -169,34 +218,166 @@
     padding-bottom: 10px;
 }
 
-.container .box{
+/* filter chips, same look as the hobby filter on the home page */
+.cert-filters{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.cert-filters button{
+    background: var(--gradient-white-bg2);
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: none;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    box-shadow: rgba(60,64,67,0.3)0px 1px 2px 0,rgba(60,64,67,0.15)0px 2px 6px 2px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.cert-filters button:hover,
+.cert-filters button.active{
+    background: var(--gradient-color-bg);
+    color: #fff;
+}
+
+/* masonry: the three .dream groups flow into one set of columns */
+.container .box{
+    width: 100%;
+    columns: 3;
+    column-gap: 15px;
 }
 
 .container .box .dream{
-    display: flex;
-    flex-direction: column;
-    width: 32.5%;
+    display: contents;
 }
 
 .container .box .dream img{
+    display: block;
     width: 100%;
-    padding-bottom: 15px;
+    height: auto;
+    margin-bottom: 15px;
     border-radius: 5px;
+    cursor: zoom-in;
+    break-inside: avoid;
+}
+.container .box .dream img.filtered-out{
+    display: none;
 }
 
-#preloader {
-    background: #e8f1f9 url(img/portfolio/loader.gif) no-repeat center center;
-    background-size: 15%;
-    height: 100vh;
-    width: 100%;
+/* fade up on scroll (class added by app.js), same pace as the reveals on the home page */
+.reveal{
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 2s cubic-bezier(.5,0,0,1), transform 2s cubic-bezier(.5,0,0,1);
+}
+.reveal.is-visible{
+    opacity: 1;
+    transform: none;
+}
+
+/* stat strip between the carousel and the certificates */
+.stats{
+    display: flex;
+    width: calc(100% - 40px);
+    max-width: 900px;
+    margin: 50px auto 0;
+    padding: 28px 20px;
+    border-radius: 10px;
+    background: var(--gradient-white-bg2);
+    box-shadow: rgba(0,0,0,0.1)0px 1px 3px 0,rgba(0,0,0,0.06)0px 1px 2px 0px;
+    text-align: center;
+}
+.stats .stat{
+    flex: 1;
+}
+.stats .stat + .stat{
+    border-left: 2px solid #e8e1e1;
+}
+.stats .number{
+    font-size: 3.2em;
+    font-weight: 800;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    background: var(--gradient-color-bg);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.stats .label{
+    color: var(--font-color);
+    font-size: .85em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* certificate zoom */
+.lightbox{
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 900;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 16px;
+    background: rgba(20, 6, 26, .92);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+    cursor: zoom-out;
+    touch-action: pinch-zoom;
+}
+.lightbox.open{
+    opacity: 1;
+    visibility: visible;
+}
+.lightbox img{
+    max-width: 100%;
+    max-height: calc(100% - 58px);
+    object-fit: contain;
+    border-radius: 6px;
+    transform: scale(.96);
+    transition: transform .25s ease;
+}
+.lightbox.open img{
+    transform: none;
+}
+.lightbox-pager{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: default;
+}
+.lightbox-pager button{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+}
+.lightbox-pager button:hover{
+    background-color: #fff;
+    color: #000;
+}
+.lightbox-count{
+    min-width: 70px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
 }
 
 
@@ -372,113 +553,489 @@
     }
 }
 
-@media(max-width:1200px){
-    .carousel .list .item .content{
-        margin-left: -100px;
-        max-width: 750px;
-        width: 100%;
-    }
-}
+/* ============ phones and tablets (1200px and below) ============
+   Shared behaviour: one slide at a time with a crossfade, the year timeline
+   instead of the thumbnail strip, swipe that follows the finger.
+   The two layouts themselves follow in their own blocks. */
 
-@media(max-width: 980px){
-    .carousel .list .item .content{
-        margin-left: -20px;
-    }
-}
-@media (max-width: 820px){
-    .carousel .list .item .content{
-        margin-left: 0px;
-    }
-}
-
-@media screen and (max-width: 678px) {
-    .desktop-img {
-        display: none;
-    }
-    
-    .mobile-img {
-        display: block;
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 15px;
+@media screen and (max-width: 1200px) {
+    .carousel{
+        touch-action: pan-y;
     }
 
-    .carousel .list .item .content{
-        padding: 1rem;
-        border-radius: 10px;
-        margin-top: 350px;
-    }
-    .carousel .list .item .content .title{
-        font-size: 1.8rem !important;
-        line-height: 1.2;
-        margin-bottom: 0.5rem;
-    }
-    .carousel .list .item .topic {
-        font-size: 1.4rem !important;
-        margin-bottom: 1rem;
-    }
-
-    .carousel .list .item .des {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        max-height: 120px;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-    }
-
-    .arrows{
-        position: absolute;
-        margin-top: 100px;
-        margin-right: -301px;
-        width: 100%;
-        max-width: 100%;
-        justify-content: center;
-        transform: none;
-    }
-    
-    
-
-    .thumbnail{
+    /* only the current slide shows; the one going away stays underneath while the next fades in */
+    .carousel .list .item{
+        opacity: 0;
         visibility: hidden;
     }
-}
+    .carousel .list .item:nth-child(1){
+        opacity: 1;
+        visibility: visible;
+    }
+    .carousel .list .item.leaving{
+        opacity: 1;
+        visibility: visible;
+    }
+    .carousel.prev .list .item:nth-child(2){
+        z-index: 0;
+    }
 
-@media screen and (max-width: 530px) {
+    .carousel .list .item .des{
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        overflow-wrap: anywhere;
+    }
+
+    .thumbnail{
+        display: none;
+    }
+
+    /* year timeline: tap a year to jump to its first award */
+    .timeline{
+        display: flex;
+        position: absolute;
+        z-index: 100;
+        height: 48px;
+    }
+    .timeline .track{
+        position: absolute;
+        top: 11px;
+        left: calc(50% / var(--years));                     /* from the first dot to the last */
+        right: calc(50% / var(--years));
+        height: 2px;
+        background: #ffffff40;
+    }
+    .timeline .fill{
+        height: 100%;
+        background: #f1683a;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .5s ease;
+    }
+    .timeline .year{
+        position: relative;
+        flex: 1;
+        padding: 24px 0 0;
+        border: none;
+        background: none;
+        color: #ffffff99;
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: color .3s;
+    }
+    .timeline .year::before{
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        margin-left: -5px;
+        border-radius: 50%;
+        background: #af7bbe;
+        transition: background-color .3s, transform .3s, box-shadow .3s;
+    }
+    .timeline .year.past::before{
+        background: #f1683a;
+    }
+    .timeline .year.current{
+        color: #fff;
+        font-weight: 700;
+    }
+    .timeline .year.current::before{
+        background: #fff;
+        transform: scale(1.3);
+        box-shadow: 0 0 0 4px #f1683a;
+    }
+
+    /* pager: level with SEE MORE */
     .arrows{
-        margin-top: 65px;
-        margin-right: -300px;
+        top: auto;
+        width: auto;
+        max-width: none;
+        margin: 0;
+        gap: 4px;
+    }
+    .slide-count{
+        display: block;
+        min-width: 54px;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+
+    /* bar under the header counts down to the next slide (driven by app.js) */
+    .carousel .time{
+        z-index: 50;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    .carousel.next .time,
+    .carousel.prev .time{
+        animation: none;
+    }
+
+    /* slide change: a quick crossfade instead of the desktop thumbnail zoom */
+    .carousel.next .list .item:nth-child(1) img,
+    .carousel.prev .list .item:nth-child(2) img{
+        position: static;
+        border-radius: 0;
+        animation: none;
+    }
+    /* the photo pops in: the art scales down onto its place */
+    .carousel.next .list .item:nth-child(1) img,
+    .carousel.prev .list .item:nth-child(1) img{
+        animation: artPop .8s cubic-bezier(.2,.7,.2,1);
+    }
+    .carousel.next .list .item:nth-child(1),
+    .carousel.prev .list .item:nth-child(1){
+        animation: slideFade .45s ease both;
+    }
+    .carousel.prev .list .item:nth-child(2) .content .author,
+    .carousel.prev .list .item:nth-child(2) .content .title,
+    .carousel.prev .list .item:nth-child(2) .content .topic,
+    .carousel.prev .list .item:nth-child(2) .content .des,
+    .carousel.prev .list .item:nth-child(2) .content .buttons
+    {
+        animation: none !important;
+    }
+
+    /* finger-following swipe: the slide and both neighbours move with the touch (--drag is set by app.js) */
+    .carousel.dragging .list .item:nth-child(1){
+        transform: translateX(var(--drag, 0px));
+    }
+    .carousel.dragging .list .item:nth-child(2),
+    .carousel.dragging .list .item:nth-last-child(1){
+        opacity: 1;
+        visibility: visible;
+    }
+    .carousel.dragging .list .item:nth-child(2){
+        transform: translateX(calc(100% + var(--drag, 0px)));
+    }
+    .carousel.dragging .list .item:nth-last-child(1){
+        transform: translateX(calc(-100% + var(--drag, 0px)));
+    }
+    .carousel.settling .list .item{
+        transition: transform .28s ease-out;
+    }
+    /* after a swipe the slide is already in place: no fade, the text stays put, the art just settles */
+    .carousel.swiped .list .item:nth-child(1) .content .author,
+    .carousel.swiped .list .item:nth-child(1) .content .title,
+    .carousel.swiped .list .item:nth-child(1) .content .topic,
+    .carousel.swiped .list .item:nth-child(1) .content .des,
+    .carousel.swiped .list .item:nth-child(1) .content .buttons
+    {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+    }
+    .carousel.swiped .list .item:nth-child(1) img{
+        animation: artSettle .6s ease-out;
+    }
+
+    /* text of the new slide: short rise, no blur (blur filters are expensive on phones) */
+    .carousel .list .item:nth-child(1) .content .author,
+    .carousel .list .item:nth-child(1) .content .title,
+    .carousel .list .item:nth-child(1) .content .topic,
+    .carousel .list .item:nth-child(1) .content .des,
+    .carousel .list .item:nth-child(1) .content .buttons
+    {
+        transform: translateY(18px);
+        filter: none;
+        animation: showContent .45s .1s ease-out 1 forwards;
+    }
+    .carousel .list .item:nth-child(1) .content .title{
+        animation-delay: .16s!important;
+    }
+    .carousel .list .item:nth-child(1) .content .topic{
+        animation-delay: .22s!important;
+    }
+    .carousel .list .item:nth-child(1) .content .des{
+        animation-delay: .28s!important;
+    }
+    .carousel .list .item:nth-child(1) .content .buttons{
+        animation-delay: .34s!important;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .mobile-img {
-        height: 200px;
+@keyframes slideFade{
+    from{
+        opacity: 0;
     }
-    
-    .carousel .list .item .title {
-        font-size: 1.5rem !important;
+}
+@keyframes artPop{
+    from{
+        transform: scale(1.07);
     }
-    
-    .carousel .list .item .topic {
-        font-size: 1.2rem !important;
+}
+@keyframes artSettle{
+    40%{
+        transform: scale(1.035);
     }
-    
-    .carousel .list .item .des {
-        font-size: 0.85rem;
-        -webkit-line-clamp: 3;
+}
+
+
+/* ============ tablets and small laptops (679px - 1200px) ============ */
+
+@media screen and (min-width: 679px) and (max-width: 1200px) {
+    /* The landscape artwork is shown whole, scaled to the screen width, so everything is
+       placed in vw against it: the small photo sits at 3.4-17.4% and the purple panel is
+       clear from there up to 48% (top and bottom rows) / 64% (middle). The text column
+       takes 20-50%. Height follows the art (16:9) but never more than the screen. */
+    .carousel{
+        --car-h: max(440px, min(56.25vw, calc(100vh - var(--header-h, 72px))));
+        --col-left: max(20vw, 152px);
+        --col-width: 30vw;
+        height: var(--car-h);
+        margin-top: var(--header-h, 72px);
+    }
+    .carousel .list .item img{
+        object-position: left center;                       /* if the art ever has to be cropped sideways, keep the small photo whole */
     }
 
     .carousel .list .item .content{
-        margin-top: 325px;
+        top: 0;
+        bottom: 0;
+        left: var(--col-left);
+        width: var(--col-width);
+        max-width: none;
+        margin: 0;
+        padding: 20px 0 82px;                               /* bottom: room for the timeline */
+        transform: none;
+        display: flex;
+        flex-direction: column;
+    }
+    /* the text sits centred in the space above the button row */
+    .carousel .list .item .author{
+        margin-top: auto;
+        font-size: 13px;
+        letter-spacing: 8px;
+    }
+    .carousel .list .item .content .title{
+        font-size: clamp(20px, 2.5vw, 28px) !important;
+        line-height: 1.2;
+        margin: 2px 0 4px;
+    }
+    .carousel .list .item .topic{
+        font-size: clamp(24px, 3.3vw, 40px) !important;
+        line-height: 1.15;
+        margin-bottom: 12px;
+    }
+    .carousel .list .item .des{
+        margin-bottom: auto;
+        font-size: clamp(13px, 1.3vw, 15px);
+        line-height: 1.5;
+    }
+    .carousel .list .item .buttons{
+        grid-template-columns: clamp(100px, 15vw, 120px);
+        margin-top: 16px;
+    }
+    .carousel .list .item .buttons a{
+        gap: 5px;
+        font-size: clamp(11px, 1.45vw, 12.5px);
+        letter-spacing: 1.5px;
     }
 
+    .timeline{
+        left: var(--col-left);
+        width: var(--col-width);
+        bottom: 18px;
+    }
+    .timeline .year{
+        font-size: clamp(10px, 1.25vw, 12px);
+        letter-spacing: .5px;
+    }
     .arrows{
-        margin-top: 91px;
-        margin-right: -250px;
+        left: auto;
+        right: calc(100vw - var(--col-left) - var(--col-width));    /* right edge of the text column */
+        bottom: 82px;
+    }
+    .slide-count{
+        display: none;                                      /* the column is too narrow for it below 980px */
+    }
+
+    .carousel .time{
+        top: 0;
+    }
+
+    .carousel.next .list .item:nth-child(1) img,
+    .carousel.prev .list .item:nth-child(2) img{
+        width: 100%;
+        height: 100%;
     }
 }
 
+@supports (height: 100svh) {
+    @media screen and (min-width: 679px) and (max-width: 1200px) {
+        .carousel{
+            --car-h: max(440px, min(56.25vw, calc(100svh - var(--header-h, 72px))));
+        }
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1200px) {
+    .slide-count{
+        display: block;
+    }
+}
+
+/* short screens: one line less of description so the column still fits */
+@media screen and (min-width: 679px) and (max-width: 1200px) and (max-height: 600px) {
+    .carousel .list .item .des{
+        -webkit-line-clamp: 4;
+    }
+}
+
+
+/* ============ phones (678px and below) ============ */
+
+@media screen and (max-width: 678px) {
+    /* The portrait artwork is 9:16 and its purple panel starts ~61% down.
+       Slides sit in one grid cell so the tallest one sets the height, the text
+       starts on the panel, and the panel colour simply continues below the art. */
+    .carousel{
+        --art-top: calc(var(--header-h, 64px) - 9vw);       /* tuck the empty top of the art under the header */
+        --text-top: calc(var(--art-top) + 108.78vw);        /* where the purple panel is full width */
+        height: auto;
+        width: 100%;
+        margin-top: 0;
+    }
+    .carousel .list{
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .carousel .list .item{
+        position: relative;
+        inset: auto;
+        grid-area: 1 / 1;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        background: #561965;
+    }
+    .carousel .list .item img{
+        display: block;
+        width: calc(100% + 8px);                            /* the artwork has a thin white strip on its left edge: push it off screen */
+        max-width: none;
+        height: auto;
+        aspect-ratio: 9 / 16;
+        margin-top: var(--art-top);
+        margin-left: -4px;
+        transform-origin: 50% 26%;                          /* centre of the hexagon photo */
+    }
+
+    .carousel .list .item .content{
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        margin: calc(-69vw - 14px) 0 0;                     /* 108.78vw - 177.78vw (and the 8px of extra art width): back up onto the panel */
+        padding: 60px 20px 28px;                            /* first row belongs to the year timeline */
+        text-shadow: none;
+    }
+    .carousel .list .item .author{
+        display: none;                                      /* the timeline shows the year */
+    }
+    .carousel .list .item .content .title{
+        font-size: 26px !important;
+        line-height: 1.2;
+        margin: 0 0 2px;
+    }
+    .carousel .list .item .topic{
+        font-size: 19px !important;
+        line-height: 1.3;
+        margin-bottom: 12px;
+    }
+    .carousel .list .item .des{
+        font-size: 14px;
+        line-height: 1.55;
+        color: #ffffffe0;
+    }
+    .carousel .list .item .buttons{
+        grid-template-columns: 130px;
+        grid-template-rows: 44px;
+        margin-top: auto;
+        padding-top: 20px;
+    }
+
+    .timeline{
+        top: var(--text-top);
+        left: 12px;
+        right: 12px;
+    }
+    .arrows{
+        bottom: 28px;
+        right: 12px;
+    }
+    .arrows button{
+        width: 44px;
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .carousel .time{
+        top: var(--header-h, 64px);
+    }
+
+    .carousel.next .list .item:nth-child(1) img,
+    .carousel.prev .list .item:nth-child(2) img{
+        width: calc(100% + 8px);
+        height: auto;
+    }
+}
+
+/* certificates: two-column masonry, tap one to zoom */
+@media (max-width: 768px){
+    .container{
+        margin: 36px 12px 0;
+    }
+    .container .heading{
+        width: 100%;
+        padding-bottom: 24px;
+    }
+    .container .heading h3{
+        font-size: 28px;
+    }
+    .cert-filters{
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+    .cert-filters button{
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    .container .box{
+        columns: 2;
+        column-gap: 10px;
+    }
+    .container .box .dream img{
+        margin-bottom: 10px;
+    }
+    .stats{
+        width: calc(100% - 24px);
+        margin-top: 28px;
+        padding: 20px 8px;
+    }
+    .stats .number{
+        font-size: 34px;
+    }
+    .stats .label{
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+}

@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/portfolio/favicon.png">
     <title>Kristiyan Gorinov</title>
+    <script>
+        // arriving from another page of this site: skip the loader, the browser crossfades instead
+        if(document.referrer && document.referrer.indexOf(location.origin) === 0) document.documentElement.classList.add('from-site');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="img/activities/opt/slide-01-m.webp" media="(max-width: 678px)" fetchpriority="high">
+    <link rel="preload" as="image" href="img/activities/opt/slide-01-d.webp" media="(min-width: 679px)" fetchpriority="high">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="awards.css">
     <link rel="stylesheet" href="./responsive.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
 </head>
 
 
@@ -19,12 +27,12 @@
     <header>
         <a href="index.html" class="logo"><span>Kristiyan</span> Gorinov</a>
         <ul class="navlist">
-            <li><a href="index.html#home" class="active">Home</a></li>
-            <li><a href="index.html#about" class="active">About</a></li>
-            <li><a href="index.html#services" class="active">Development</a></li>
-            <li><a href="index.html#portfolio" class="active">Portfolio</a></li>
-            <li><a href="index.html#blog" class="active">Blog</a></li>
-            <li><a href="index.html#contact" class="active">Contact</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Development</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <div class="right-header">
             <a href="awards.html" class="btn">My Awards<i class="bx bx-right-arrow-alt"></i></a>
@@ -39,8 +47,10 @@
         <!-- list item -->
         <div class="list">
             <div class="item">
-                <img src="img/activities/1 tumb.png" class="desktop-img">
-                <img src="img/activities/1.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-01-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-01-d.webp" alt="Nikolai Chudotvorec, 2018" width="1920" height="1080" fetchpriority="high">
+                </picture>
                 <div class="content">
                     <div class="author">2018</div>
                     <div class="title">Mathematics</div>
@@ -57,13 +67,15 @@
         5-6 клас – трето място, купа
                     </div>
                     <div class="buttons">
-                        <button><a href="https://www.geomilev.info/news/poreden-uspeh-v-sstezanieto-n-chudotvorec.html">SEE MORE</a></button>
+                        <a href="https://www.geomilev.info/news/poreden-uspeh-v-sstezanieto-n-chudotvorec.html">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/2 tumb.png" class="desktop-img">
-                <img src="img/activities/2.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-02-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-02-d.webp" alt="It Znaiko, 2019" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2019</div>
                     <div class="title">Programming</div>
@@ -71,13 +83,15 @@
                     <div class="des">
                         Теодор Казаков от VI „д” клас  и Кристиян Горинов от V „е” клас са на първо място в категория „Програмист” на финала на Националното състезание „IT Знайко” -  V-VIII клас.Виктор Иванов от V „а” клас е на трета позиция в категория „IT”. Даниел Йорданов  от V „а” клас е с грамота за отлично представяне.                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.geomilev.info/news/za-poreden-pt-na-prvo-myasto.html">SEE MORE</a></button>
+                        <a href="https://www.geomilev.info/news/za-poreden-pt-na-prvo-myasto.html">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/3 tumb.png" class="desktop-img">
-                <img src="img/activities/3.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-03-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-03-d.webp" alt="The Space, 2019" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2019</div>
                     <div class="title">Web developing</div>
@@ -86,13 +100,15 @@
                         Даниел  Йорданов от  VI „а“  клас  и  Кристиян Горинов – VI „е“  са сред лауреатите на XXI Национален конкурс „Космосът – настояще и бъдеще на човечеството“.
                         В Деня на Народните будители, в Националния политехнически музей в София, Фондация „Еврика“ връчи на официално тържество наградите на лауреатите от конкурса.                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.geomilev.info/news/laureati-ot-xxi-nacionalen-konkurs-kosmost-nastoyashe-i-bdeshe-na-chovechestvoto.html">SEE MORE</a></button>
+                        <a href="https://www.geomilev.info/news/laureati-ot-xxi-nacionalen-konkurs-kosmost-nastoyashe-i-bdeshe-na-chovechestvoto.html">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/4 tumb.png" class="desktop-img">
-                <img src="img/activities/4.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-04-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-04-d.webp" alt="It Znaiko, 2021" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2021</div>
                     <div class="title">Programming</div>
@@ -104,13 +120,15 @@
                   7 клас – Кристиян Горинов  7 „е“ – ВТОРО място
                   7 клас – Екип: Даниел Йорданов и Мартин Димитров 7 „а“ - грамота ОРИГИНАЛНА ИДЕЯ                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.geomilev.info/news/prizovi-mesta-za-uchastnici-v-klub-it-academy.html">SEE MORE</a></button>
+                        <a href="https://www.geomilev.info/news/prizovi-mesta-za-uchastnici-v-klub-it-academy.html">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/5 tumb.png" class="desktop-img">
-                <img src="img/activities/5.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-05-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-05-d.webp" alt="Statistics Olympiad, 2023" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2023</div>
                     <div class="title">Mathematics</div>
@@ -122,13 +140,15 @@
 📌 KHS от Категория Б: Кристиян Горинов - 9.а клас, Християн Димитров - 9.г клас и Станислав Петров - 9.д клас, с ментор г-жа Галина Аролска 🔥
                     </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/PGKMKS/posts/pfbid07UgrnLzH1RLcDrZ4qxYcfdck4D1PD4FFBvtpitXhdBfsRf5wbW36SJaXo73FcAwul">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/PGKMKS/posts/pfbid07UgrnLzH1RLcDrZ4qxYcfdck4D1PD4FFBvtpitXhdBfsRf5wbW36SJaXo73FcAwul">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/6 tumb.png" class="desktop-img">
-                <img src="img/activities/6.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-06-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-06-d.webp" alt="Ja Bulgaria, 2023" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2023</div>
                     <div class="title">Business</div>
@@ -136,13 +156,15 @@
                     <div class="des">
                         📣 🌟Иновативната идея на екип “Artims”, в който участваха Симон Радански, Мартин Тончев  от XI.г клас и Кристиян Горинов от X.a клас спечели 🥇първо място на Иновационен лагер за генериране на идеи, #УчебнаКомпания, организиран от Junior Achievement Bulgaria , който се състоя на 27 - 28.10. 2023 г. в Икономически университет Варна.                     </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/PGKMKS/posts/pfbid02obdJjNE6M6DQLZER42D5pp51eYhA9A9g3AQJHZ123mGMExMzdf2ruf1JSAd1q8eTl">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/PGKMKS/posts/pfbid02obdJjNE6M6DQLZER42D5pp51eYhA9A9g3AQJHZ123mGMExMzdf2ruf1JSAd1q8eTl">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/7 tumb.png" class="desktop-img">
-                <img src="img/activities/7.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-07-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-07-d.webp" alt="Az Sum It Bulgarche, 2023" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2023</div>
                     <div class="title">Presentation</div>
@@ -151,13 +173,15 @@
                         🎉 Учениците от ПГКМКС "Акад. Благовест Сендов" гр . Варна направиха страхотно представяне на Националното състезание по информационни технологии "Аз съм ИТ българче", където участниците имаха 4 часа за разработване на проекти. 
                         🏆 Първо място за Кристиян Горинов от IXа клас в раздел "Презентация" за енергията, която вложи в своя проект;                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/PGKMKS/posts/pfbid02xBJCAvZ4vgnnhaTy4ffbtraXdisHgKmTuPAntkWpP85FfDAdmxjooWGk3kJwZX5El">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/PGKMKS/posts/pfbid02xBJCAvZ4vgnnhaTy4ffbtraXdisHgKmTuPAntkWpP85FfDAdmxjooWGk3kJwZX5El">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/8 tumb.png" class="desktop-img">
-                <img src="img/activities/9.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-08-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-08-d.webp" alt="Beronovite Praznici, 2023" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2023</div>
                     <div class="title">Mathematics</div>
@@ -166,13 +190,15 @@
                         🎉🧮 Поздравления за нашите ученици от ПГКМКС "Акад. Благовест Сендов" в град Варна, които взеха участие в математическото състезание "Беронови празници" по случай юбилея на МГ"Д-р П. Берон" на 15.12.23! 🎉🧮
                         Нашите ученици от осми, девети, десети и единадесети клас представиха нашето училище с гордост и достойнство в това интересно и забавно състезание. Училището ни участва с шест отбора, които се справиха отлично! 👏🌟                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/PGKMKS/posts/pfbid026FvFFo29zdBBiz8DH7g3dhN7C1sRv6eAACMpyB5GXyvMadUpSkTWa7YNdDNDPx2Kl">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/PGKMKS/posts/pfbid026FvFFo29zdBBiz8DH7g3dhN7C1sRv6eAACMpyB5GXyvMadUpSkTWa7YNdDNDPx2Kl">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/9 tumb.png" class="desktop-img">
-                <img src="img/activities/8.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-09-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-09-d.webp" alt="Code Wars, 2023-2024" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2023-2024</div>
                     <div class="title">Programming</div>
@@ -182,13 +208,15 @@
                         .
                         С гордост обявяваме, че състезанието #CodeWars2023, на ПГКМКС "Акад. Благовест Сендов" в гр. Варна, беше истинска арена на технологиите и програмирането! 💥🔥                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/codewars.itpg/posts/pfbid024rze2rQFup3RhjoxNWMPiusqwP9k55yfwxzPbRtwAuBCZTwWUi9xcz2pn5AAjZk2l">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/codewars.itpg/posts/pfbid024rze2rQFup3RhjoxNWMPiusqwP9k55yfwxzPbRtwAuBCZTwWUi9xcz2pn5AAjZk2l">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/10 tumb.png" class="desktop-img">
-                <img src="img/activities/10.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-10-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-10-d.webp" alt="Technostart, 2024" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2024</div>
                     <div class="title">Business</div>
@@ -197,13 +225,15 @@
                         🏆 С гордост представяме отбора от ПГКМКС "Акад. Благовест Сендов" от Варна, който се превърна в победител на  🚀 ТЕХНОСТАРТ Weekend Junior Edition 2024, организиран от ICT Cluster Varna / ИКТ Клъстер Варна ! 🎉
                         Състезанието, което продължи три дни, беше изпълнено с вдъхновение, креативност и страст към технологиите. Участваха 40 отбора с общо 150 ученици, които представиха своите бизнес идеи и се състезаваха за награден фонд от над 10 000 лв.                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/PGKMKS/posts/pfbid02oXUcBfYf4sNfHZAtYbUGm6vCzzcDmSzEg3KCsYCUMuud1MXPNEKneCEi3nU1S743l">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/PGKMKS/posts/pfbid02oXUcBfYf4sNfHZAtYbUGm6vCzzcDmSzEg3KCsYCUMuud1MXPNEKneCEi3nU1S743l">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/11 tumb.png" class="desktop-img">
-                <img src="img/activities/11.png" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-11-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-11-d.webp" alt="Az Sum It Bulgarche, 2024" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2024</div>
                     <div class="title">Presentation</div>
@@ -214,13 +244,15 @@
                         🏆 Кристиян Горинов от Xа клас се класира на трето място в раздела "Презентация".
                         🏆 Петър Йорданов от ХIг клас също се нареди на трето място в раздела "Фотография".                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/PGKMKS/posts/pfbid0nrVPRmeNuyjw5aYPg1uso4d1JcNjmLFCmnRycoFzpurpJtpfMoEQigXMt4rwxLqfl">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/PGKMKS/posts/pfbid0nrVPRmeNuyjw5aYPg1uso4d1JcNjmLFCmnRycoFzpurpJtpfMoEQigXMt4rwxLqfl">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <img src="img/activities/13.png" class="desktop-img">
-                <img src="img/activities/13.jpg" class="mobile-img">
+                <picture>
+                    <source media="(max-width: 678px)" srcset="img/activities/opt/slide-12-m.webp" width="900" height="1600">
+                    <img src="img/activities/opt/slide-12-d.webp" alt="Multitalent Quest, 2025" width="1920" height="1080" loading="lazy" decoding="async">
+                </picture>
                 <div class="content">
                     <div class="author">2025</div>
                     <div class="title">All in one</div>
@@ -230,7 +262,7 @@
 And the stakes were high: the grand winner earned a full four-year scholarship at AUBG.
 Congratulations to all participants, and special applause for our winners who made this edition of the MultiTalent Quest unforgettable.                    </div>
                     <div class="buttons">
-                        <button><a href="https://www.facebook.com/AUBGcurious/posts/pfbid02pfQsZ2U65CBY9mZnTQovTgz1ipMcdZxGEXuZTRmv29vySJRmgHSuxnR5BjrdQDFhl">SEE MORE</a></button>
+                        <a href="https://www.facebook.com/AUBGcurious/posts/pfbid02pfQsZ2U65CBY9mZnTQovTgz1ipMcdZxGEXuZTRmv29vySJRmgHSuxnR5BjrdQDFhl">SEE MORE<i class="bx bx-right-arrow-alt"></i></a>
                     </div>
                 </div>
             </div>  
@@ -242,7 +274,7 @@ Congratulations to all participants, and special applause for our winners who ma
         <div class="thumbnail">
 
             <div class="item">
-                <img src="img/activities/1.png">
+                <img src="img/activities/opt/slide-01-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2018
@@ -254,7 +286,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/2.png">
+                <img src="img/activities/opt/slide-02-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2019
@@ -266,7 +298,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/3.png">
+                <img src="img/activities/opt/slide-03-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2019
@@ -278,7 +310,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/4.png">
+                <img src="img/activities/opt/slide-04-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2021
@@ -290,7 +322,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/5.png">
+                <img src="img/activities/opt/slide-05-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2023
@@ -302,7 +334,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/6.png">
+                <img src="img/activities/opt/slide-06-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2023
@@ -314,7 +346,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/7.png">
+                <img src="img/activities/opt/slide-07-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2023
@@ -326,7 +358,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/9.png">
+                <img src="img/activities/opt/slide-08-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2023
@@ -338,7 +370,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/8.png">
+                <img src="img/activities/opt/slide-09-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2023-2024
@@ -350,7 +382,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/10.png">
+                <img src="img/activities/opt/slide-10-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2024
@@ -362,7 +394,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/11.png">
+                <img src="img/activities/opt/slide-11-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2024
@@ -374,7 +406,7 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
 
             <div class="item">
-                <img src="img/activities/13.jpg">
+                <img src="img/activities/opt/slide-12-t.webp" alt="" width="300" height="534" loading="lazy" decoding="async">
                 <div class="content">
                     <div class="title">
                         2025
@@ -386,58 +418,86 @@ Congratulations to all participants, and special applause for our winners who ma
             </div>
                     
         </div>
+        <!-- year timeline (phones), filled in by app.js -->
+        <div class="timeline" role="group" aria-label="Awards by year"></div>
         <!-- next prev -->
 
         <div class="arrows">
-            <button id="prev"><</button>
-            <button id="next">></button>
+            <button id="prev" aria-label="Previous award">&lt;</button>
+            <div class="slide-count" aria-hidden="true"></div>
+            <button id="next" aria-label="Next award">&gt;</button>
         </div>
         <!-- time running -->
         <div class="time"></div>
+    </div>
+
+    <!-- the numbers are counted from the page by app.js -->
+    <div class="stats">
+        <div class="stat">
+            <div class="number" data-stat="awards">12</div>
+            <div class="label">Awards</div>
+        </div>
+        <div class="stat">
+            <div class="number" data-stat="certificates">30</div>
+            <div class="label">Certificates</div>
+        </div>
+        <div class="stat">
+            <div class="number" data-stat="years">7</div>
+            <div class="label">Years</div>
+        </div>
     </div>
 
     <div class="container">
         <div class="heading">
             <h3>My <span>Certificates</span></h3>
         </div>
+        <!-- each certificate below carries one of these as data-category -->
+        <div class="cert-filters" role="group" aria-label="Filter certificates">
+            <button type="button" class="active" data-filter="all">All</button>
+            <button type="button" data-filter="it">IT &amp; Programming</button>
+            <button type="button" data-filter="maths">Maths</button>
+            <button type="button" data-filter="business">Business</button>
+            <button type="button" data-filter="languages">Languages</button>
+            <button type="button" data-filter="school">School &amp; Community</button>
+        </div>
         <div class="box">
 
             <div class="dream">
-                <img src="sertificates/1.jpg">
-                <img src="sertificates/2.png">
-                <img src="sertificates/10.png">
-                <img src="sertificates/29.png">
-                <img src="sertificates/4.png">
-                <img src="sertificates/5.jpg">
-                <img src="sertificates/6.png">
-                <img src="sertificates/7.jpg">
-                <img src="sertificates/8.png">
-                <img src="sertificates/9.jpg">
+                <img src="sertificates/opt/1-600.webp" data-category="languages" srcset="sertificates/opt/1-600.webp 600w, sertificates/opt/1-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/1-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/2-600.webp" data-category="school" srcset="sertificates/opt/2-600.webp 600w, sertificates/opt/2-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/2-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/10-600.webp" data-category="it" srcset="sertificates/opt/10-600.webp 600w, sertificates/opt/10-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/10-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/29-600.webp" data-category="school" srcset="sertificates/opt/29-600.webp 600w, sertificates/opt/29-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/29-1200.webp" alt="Certificate" width="1200" height="848" loading="lazy" decoding="async">
+                <img src="sertificates/opt/4-600.webp" data-category="school" srcset="sertificates/opt/4-600.webp 600w, sertificates/opt/4-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/4-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/5-600.webp" data-category="business" srcset="sertificates/opt/5-600.webp 600w, sertificates/opt/5-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/5-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/6-600.webp" data-category="business" srcset="sertificates/opt/6-600.webp 600w, sertificates/opt/6-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/6-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/7-600.webp" data-category="it" srcset="sertificates/opt/7-600.webp 600w, sertificates/opt/7-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/7-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/8-600.webp" data-category="maths" srcset="sertificates/opt/8-600.webp 600w, sertificates/opt/8-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/8-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/9-600.webp" data-category="it" srcset="sertificates/opt/9-600.webp 600w, sertificates/opt/9-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/9-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
             </div>
             <div class="dream">
-                <img src="sertificates/3.jpg">
-                <img src="sertificates/28.png">
-                <img src="sertificates/11.jpg">
-                <img src="sertificates/12.png">
-                <img src="sertificates/13.png">
-                <img src="sertificates/14.png">
-                <img src="sertificates/15.png">
-                <img src="sertificates/16.png">
-                <img src="sertificates/17.png">
-                <img src="sertificates/18.png">
+                <img src="sertificates/opt/3-600.webp" data-category="it" srcset="sertificates/opt/3-600.webp 600w, sertificates/opt/3-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/3-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/28-600.webp" data-category="school" srcset="sertificates/opt/28-600.webp 600w, sertificates/opt/28-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/28-1200.webp" alt="Certificate" width="1200" height="848" loading="lazy" decoding="async">
+                <img src="sertificates/opt/11-600.webp" data-category="school" srcset="sertificates/opt/11-600.webp 600w, sertificates/opt/11-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/11-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/12-600.webp" data-category="school" srcset="sertificates/opt/12-600.webp 600w, sertificates/opt/12-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/12-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/13-600.webp" data-category="it" srcset="sertificates/opt/13-600.webp 600w, sertificates/opt/13-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/13-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/14-600.webp" data-category="maths" srcset="sertificates/opt/14-600.webp 600w, sertificates/opt/14-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/14-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/15-600.webp" data-category="school" srcset="sertificates/opt/15-600.webp 600w, sertificates/opt/15-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/15-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/16-600.webp" data-category="maths" srcset="sertificates/opt/16-600.webp 600w, sertificates/opt/16-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/16-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/17-600.webp" data-category="it" srcset="sertificates/opt/17-600.webp 600w, sertificates/opt/17-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/17-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/18-600.webp" data-category="school" srcset="sertificates/opt/18-600.webp 600w, sertificates/opt/18-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/18-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
 
             </div>
             <div class="dream">
-                <img src="sertificates/30.png">
-                <img src="sertificates/20.png">
-                <img src="sertificates/19.png">
-                <img src="sertificates/21.png">
-                <img src="sertificates/22.png">
-                <img src="sertificates/23.png">
-                <img src="sertificates/24.png">
-                <img src="sertificates/25.png">
-                <img src="sertificates/26.png">
-                <img src="sertificates/27.png">
+                <img src="sertificates/opt/30-600.webp" data-category="school" srcset="sertificates/opt/30-600.webp 600w, sertificates/opt/30-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/30-1200.webp" alt="Certificate" width="1200" height="848" loading="lazy" decoding="async">
+                <img src="sertificates/opt/20-600.webp" data-category="it" srcset="sertificates/opt/20-600.webp 600w, sertificates/opt/20-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/20-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/19-600.webp" data-category="it" srcset="sertificates/opt/19-600.webp 600w, sertificates/opt/19-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/19-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/21-600.webp" data-category="school" srcset="sertificates/opt/21-600.webp 600w, sertificates/opt/21-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/21-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/22-600.webp" data-category="it" srcset="sertificates/opt/22-600.webp 600w, sertificates/opt/22-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/22-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/23-600.webp" data-category="it" srcset="sertificates/opt/23-600.webp 600w, sertificates/opt/23-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/23-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/24-600.webp" data-category="it" srcset="sertificates/opt/24-600.webp 600w, sertificates/opt/24-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/24-1200.webp" alt="Certificate" width="1200" height="1650" loading="lazy" decoding="async">
+                <img src="sertificates/opt/25-600.webp" data-category="it" srcset="sertificates/opt/25-600.webp 600w, sertificates/opt/25-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/25-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/26-600.webp" data-category="it" srcset="sertificates/opt/26-600.webp 600w, sertificates/opt/26-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/26-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
+                <img src="sertificates/opt/27-600.webp" data-category="it" srcset="sertificates/opt/27-600.webp 600w, sertificates/opt/27-1200.webp 1200w" sizes="(max-width: 768px) 50vw, 33vw" data-full="sertificates/opt/27-1200.webp" alt="Certificate" width="1200" height="872" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -446,8 +506,16 @@ Congratulations to all participants, and special applause for our winners who ma
         <p>Copyright © 2025 by <span>Kristiyan Gorinov</span> || All Right Reserved.</p>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- certificate zoom -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <img alt="Certificate">
+        <div class="lightbox-pager">
+            <button type="button" id="lightbox-prev" aria-label="Previous certificate">&lt;</button>
+            <div class="lightbox-count"></div>
+            <button type="button" id="lightbox-next" aria-label="Next certificate">&gt;</button>
+        </div>
+    </div>
+
     <script src="app.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>

@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/portfolio/favicon.png">
     <title>Kristiyan Gorinov</title>
+    <script>
+        // "sr": the hero stays hidden until ScrollReveal animates it in (dropped after 4s in case that script never loads)
+        document.documentElement.classList.add('sr');
+        setTimeout(function(){ document.documentElement.classList.remove('sr'); }, 4000);
+        // arriving from another page of this site: skip the loader, the browser crossfades instead
+        if(document.referrer && document.referrer.indexOf(location.origin) === 0) document.documentElement.classList.add('from-site');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="img/opt/hero.webp" fetchpriority="high">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./responsive.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     </head>
     <!-- Notification Container -->
@@ -62,7 +73,7 @@
             </div>
         </div>
         <div class="img-hero">
-            <img src="img/kris snimki/kris snimki/15.3.2025/DSC03942-modified.png" alt="">
+            <img src="img/opt/hero.webp" width="800" height="800" fetchpriority="high" alt="">
             <div class="rotate-text">
                 <div class="text">
                     <p>Python Developer and Athlete</p>
@@ -75,10 +86,10 @@
     <!-- Original About Section -->
 <section class="about-main" id="about">
     <div class="about-img">
-        <img src="img/kris snimki/kris snimki/15.3.2025/about-me.png" alt="" class="aboutHero">
+        <img src="img/opt/about-me.webp" width="666" height="375" loading="lazy" decoding="async" alt="" class="aboutHero">
         <div class="showcase-ring">
-            <img src="shapes/ring.png" class="ring">
-            <img src="shapes/circle.png" class="circle">
+            <img src="shapes/ring.png" alt="" loading="lazy" decoding="async" class="ring">
+            <img src="shapes/circle.png" alt="" loading="lazy" decoding="async" class="circle">
         </div>
     </div>
     <div class="about-content">
@@ -146,7 +157,7 @@
 </section>
 
 <div class="flags-divider">
-    <img src="img/activities/Untitled design (18).png" class="flags-bg" alt="Flags background">
+    <img src="img/opt/flags-bg.webp" loading="lazy" decoding="async" class="flags-bg" alt="Flags background">
 </div>
     
 <!-- International Student Section -->
@@ -157,7 +168,7 @@
         <p>I can confidently say that I've faced many language barriers but have always found ways to overcome them. My first experience was during my first Erasmus+ program in Guadalajara, Spain, where I handled both English and Spanish at just 10 years of age. My second adventure was during the summer of 2022 when I was assigned to teach Russian children at a summer camp, sharing my knowledge about Scratch and introductory programming. My last and most cherished experience was during MTQ25 at AUBG, where I met amazing people from five different nations and excelled in all of our tasks. I'm curious to see what the future has in store for me.</p>
         <div class="interactive-flags">
             <div class="flag-item" data-country="Spain" onclick="toggleFlagInfo(this)">
-                <img src="img/activities/spain.png" alt="Spain Flag">
+                <img src="img/activities/spain.png" loading="lazy" decoding="async" alt="Spain Flag">
                 <div class="flag-info">
                     <h4>Spain</h4>
                     <p>Erasmus+ program in Guadalajara, where we stayed with different Spanish families for a week independently. An incredible journey.</p>
@@ -165,7 +176,7 @@
                 </div>
             </div>
             <div class="flag-item" data-country="Russia" onclick="toggleFlagInfo(this)">
-                <img src="img/activities/russia.png" alt="Russia Flag">
+                <img src="img/activities/russia.png" loading="lazy" decoding="async" alt="Russia Flag">
                 <div class="flag-info">
                     <h4>Russia</h4>
                     <p>At a Russian summer camp, I taught Scratch programming, with each participant completing an individual project by the program's conclusion.</p>
@@ -173,7 +184,7 @@
                 </div>
             </div>
             <div class="flag-item" data-country="International" onclick="toggleFlagInfo(this)">
-                <img src="img/activities/america.png" alt="International">
+                <img src="img/activities/america.png" loading="lazy" decoding="async" alt="International">
                 <div class="flag-info">
                     <h4>5 Nations</h4>
                     <p>MTQ25 at AUBG was probably my most heartwarming experience, meeting incredible people who shared the same drive and dreams as me.</p>
@@ -188,15 +199,15 @@
 
     <div class="student-img">            
         <div class="slider">
-            <img src="img/activities/erasmus.jpg" class="slide active" alt="About me 1">
-            <img src="img/activities/IMG-8464f8b8a0a16d60bf1793d23d3071c4-V.jpg" class="slide" alt="About me 2">
-            <img src="img/activities/AUBG.jpg" class="slide" alt="About me 3">
+            <img src="img/opt/student-erasmus.webp" decoding="async" class="slide active" alt="About me 1">
+            <img src="img/opt/student-camp.webp" decoding="async" class="slide" alt="About me 2">
+            <img src="img/opt/student-aubg.webp" decoding="async" class="slide" alt="About me 3">
         </div>
 
         <div class="showcase-ring">
-            <img src="shapes/ring.png" class="ring">
-            <img src="shapes/circle.png" class="circle">
-            <img src="shapes/half-ring.png" class="circle">
+            <img src="shapes/ring.png" alt="" loading="lazy" decoding="async" class="ring">
+            <img src="shapes/circle.png" alt="" loading="lazy" decoding="async" class="circle">
+            <img src="shapes/half-ring.png" alt="" loading="lazy" decoding="async" class="circle">
         </div>
     </div>
 </section>
@@ -251,15 +262,15 @@
                 <h3>Like what you see?</h3>
                 <a href="#contact" class="btn">Contact Me</a>
             </div>
-            <img src="img/kris snimki/snimki/3-30-2025/blog.png" class="first">
+            <img src="img/opt/proposal.webp" loading="lazy" decoding="async" class="first">
         </div>
 
         <div class="showcase">
-            <img src="shapes/ring.png" class="ring">
-            <img src="shapes/circle.png" class="circle">
-            <img src="shapes/circle.png" class="circle2">
-            <img src="shapes/circle.png" class="circle3">
-            <img src="shapes/half-ring.png" class="half-ring">
+            <img src="shapes/ring.png" alt="" loading="lazy" decoding="async" class="ring">
+            <img src="shapes/circle.png" alt="" loading="lazy" decoding="async" class="circle">
+            <img src="shapes/circle.png" alt="" loading="lazy" decoding="async" class="circle2">
+            <img src="shapes/circle.png" alt="" loading="lazy" decoding="async" class="circle3">
+            <img src="shapes/half-ring.png" alt="" loading="lazy" decoding="async" class="half-ring">
 
         </div>
     </section>
@@ -283,7 +294,7 @@
                     <p>One day during the 2020 lockdown, I saw a YouTube course on how to make a donut in Blender and was immediately engaged. I completed the entire course and felt really proud of my work. After that, I started 3D modeling as a hobby and developed my skills further than I had ever imagined.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/blog/modeling.png" alt="">
+                    <img src="img/opt/hobby-modeling.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
 
@@ -293,7 +304,7 @@
                     <p>I started calisthenics at 14, but all my friends tried to convince me to join the gym. After a year, I agreed and began my own fitness journey, gaining 15 pounds of lean muscle, learning the principles of discipline, and making many new connections. </p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/blog/gym.jpg" alt="">
+                    <img src="img/opt/hobby-gym.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
 
@@ -303,7 +314,7 @@
                     <p>At my grandma's 70th birthday celebration, there was a couple who were professional salsa dancers. When I saw their movements, I immediately became intrigued, and when we returned home, I signed up for salsa lessons. It was a unique and fun experience trying it for the first time.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/blog/salsa.jpg" alt="">
+                    <img src="img/opt/hobby-salsa.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
 
@@ -313,7 +324,7 @@
                     <p>Last summer, I wanted to learn how to surf, but my mother said I should first learn to swim at least at an intermediate level. Coincidentally, one of my friends is a swimming coach, so I signed up for personal training. To this day, he pushes me to my limits every session, and I have improved immensely.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/activities/swimming.png" alt="">
+                    <img src="img/opt/hobby-swimming.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
 
@@ -323,7 +334,7 @@
                     <p>My friend and I were arguing about who was better at which sport, and he mentioned climbing, which I didn't want to believe. We went as a joke to prove who was better. After a few sessions, we fell in love with the sport and became climbing athletes at the club 'Chudnite Skali'.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/blog/climbing.jpg" alt="">
+                    <img src="img/opt/hobby-climbing.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
 
@@ -333,7 +344,7 @@
                     <p>In 8th grade, we had a school concert where one of the seniors performed a guitar recital. This sparked my interest in acoustic guitar and motivated me to start learning. After the school year ended, I took guitar lessons for two years, significantly improving my skills. Now I only play as a hobby with friends.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/blog/guitar.jpg" alt="">
+                    <img src="img/opt/hobby-guitar.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
 
@@ -343,7 +354,7 @@
                     <p>In my spare time, I enjoy playing games. One of my favorites is Teamfight Tactics, an auto-chess game using League of Legends champions. In December 2024, my friend and I reached the top ranks, placing in the top 300 in all of Europe, which required incredible tactics and quick thinking.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/kris snimki/kris snimki/15.3.2025/TFT.png" alt="">
+                    <img src="img/opt/hobby-tft.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
             <div class="portfolio-box mix branding">
@@ -352,7 +363,7 @@
                     <p>When I want to immerse myself in imagination, I enjoy reading. Last summer, I bought all 26 novels of the Monogatari series. They're written by the famous author NisiOisiN, who is known as the Japanese Shakespeare, demonstrating immense linguistic knowledge and incredible storytelling.</p>
                 </div>
                 <div class="portfolio-img">
-                    <img src="img/blog/books.jpg" alt="">
+                    <img src="img/opt/hobby-books.webp" loading="lazy" decoding="async" alt="">
                 </div>
             </div>
         </div>
@@ -370,7 +381,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/kris snimki/kris snimki/15.3.2025/Perfomalis.jpg" alt="">
+                        <img src="img/opt/blog-perfomalis.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>Perfomalis LTD</h2>
@@ -384,7 +395,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/kris snimki/kris snimki/15.3.2025/BoulderCup.jpg" alt="">
+                        <img src="img/opt/blog-bouldercup.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>Boulder Cup "Odesos"</h2>
@@ -400,7 +411,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/portfolio/trees.jpg" alt="">
+                        <img src="img/opt/blog-trees.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>Earth day</h2>
@@ -414,7 +425,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/portfolio/Interact.jpg" alt="">
+                        <img src="img/opt/blog-interact.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>Interact Club</h2>
@@ -428,7 +439,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/kris snimki/kris snimki/15.3.2025/JA BULGARIA.jpg" alt="">
+                        <img src="img/opt/blog-ja-bulgaria.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>JA BUlGARIA</h2>
@@ -442,7 +453,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/kris snimki/kris snimki/15.3.2025/IT Bulgarche.jpg" alt="">
+                        <img src="img/opt/blog-it-bulgarche.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>Az sum IT Bulgarche</h2>
@@ -456,7 +467,7 @@
 
                 <div class="card swiper-slide">
                     <div class="card-top">
-                        <img src="img/kris snimki/kris snimki/15.3.2025/Beach.jpg" alt="">
+                        <img src="img/opt/blog-beach.webp" decoding="async" alt="">
                     </div>
                     <div class="card-info">
                         <h2>Foundation "Friends of the Sea"</h2>
@@ -472,10 +483,10 @@
 
         <div class="swiper-pagination"></div>
             <div class="showcase">
-                <img src="shapes/ring.png" class="ring">
-                <img src="shapes/second-circle.png" class="second-circle">
-                <img src="shapes/circle.png" class="circle">
-                <img src="shapes/half-ring.png" class="half-ring">
+                <img src="shapes/ring.png" alt="" loading="lazy" decoding="async" class="ring">
+                <img src="shapes/second-circle.png" alt="" loading="lazy" decoding="async" class="second-circle">
+                <img src="shapes/circle.png" alt="" loading="lazy" decoding="async" class="circle">
+                <img src="shapes/half-ring.png" alt="" loading="lazy" decoding="async" class="half-ring">
             </div>
     </section>
 
@@ -612,7 +623,7 @@
     </div>
 
     <!-- scroll reveal  -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <!-- mixitup cdn js -->

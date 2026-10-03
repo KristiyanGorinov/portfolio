@@ -101,6 +101,43 @@
         padding-left: 3%;
         padding-right: 3%;
     }
+    .menu-icon .bar,.menu-icon::after,.menu-icon::before{
+        display: block;
+    }
+    ul.navlist{
+        position: absolute;
+        top: -1000px;
+        transition: all .3s ease;
+        width: 100%;
+        text-align: center;
+        display: block;
+        background: var(--gradient-white-bg);
+        left: 0;
+        border-top: 2px solid rgba(248, 202, 202, .7);
+    }
+    ul.navlist a{
+        font-size: 1.5rem;
+        margin: 1rem 0;
+    }
+    .navlist.active{
+        top: 100%;
+    }
+    .overlay{
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background: rgba(0,0,0,0.5);
+        z-index: 8;
+        opacity: 0;
+        transition: .3s;
+        pointer-events: none;
+    }
+    body.open .overlay{
+        opacity: 1;
+        pointer-events: auto;
+    }
     .home,.portfolio-box{
         flex-direction: column-reverse;
     }
@@ -158,43 +195,6 @@
     .proposal{
         display: none;
     }
-    .menu-icon .bar,.menu-icon::after,.menu-icon::before{
-        display: block;
-    }
-    ul.navlist{
-        position: absolute;
-        top: -1000px;
-        transition: all .3s ease;
-        width: 100%;
-        text-align: center;
-        display: block;
-        background: var(--gradient-white-bg);
-        left: 0;
-        border-top: 2px solid rgba(248, 202, 202, .7);
-    }
-    ul.navlist a{
-        font-size: 1.5rem;
-        margin: 1rem 0;
-    }
-    .navlist.active{
-        top: 100%;
-    }
-    .overlay{
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        position: fixed;
-        background: rgba(0,0,0,0.5);
-        z-index: 8;
-        opacity: 0;
-        transform: .3s;
-        pointer-events: none;
-    }
-    body.open .overlay{
-        opacity: 1;
-        pointer-events: auto;
-    }
     .btn{
         padding: 10px;
     }
@@ -204,22 +204,6 @@
     .fillter-buttons button{
         padding: 10px;
         font-size: .8rem;
-    }
-
-    .container .box{
-        flex-direction: column;
-    }
-
-    .container .box .dream{
-        width: 100%;
-    }
-
-    .container .heading{
-        width: 100%;
-    }
-
-    .container .heading h3{
-        font-size: 1em;
     }
 
     .international-student {
@@ -277,7 +261,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: animate 1s linear infinite;
+    transition: transform .9s cubic-bezier(.3,.1,.2,1);
+}
+
+/* icon rings turn once when they come into view and once more on hover, instead of spinning forever */
+.bg-icon.in-view span,
+.servicesItem.in-view .icon-services span{
+    transform: rotate(360deg);
+}
+
+.bg-icon:hover span,
+.servicesItem:hover .icon-services span{
+    transform: rotate(720deg);
 }
 
 .img-hero{
@@ -480,7 +475,7 @@
     top: -5px;
     background: var(--gradient-color-bg);
     border-radius: 50%;
-    animation: animate 1s linear infinite;
+    transition: transform .9s cubic-bezier(.3,.1,.2,1);
 }
 
 .servicesItem h3{
@@ -795,4 +790,42 @@ form input:focus,form textarea:focus{
     filter: brightness(100%);
     background: #d2e9ff;
     border: 2px solid #f8caca;
+}
+
+/* header on tablets and small laptops: the logo, six links and the button no longer fit
+   with the desktop spacing, so tighten it (below 992px the hamburger menu takes over) */
+@media(max-width:1280px){
+    header{
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    header .logo{
+        font-size: 1.5rem;
+        white-space: nowrap;
+    }
+    .right-header .btn{
+        white-space: nowrap;
+    }
+}
+
+@media(min-width:992px) and (max-width:1280px){
+    .navlist li{
+        margin: 0 .55rem;
+    }
+    .menu-icon{
+        display: none;
+    }
+}
+
+@media(max-width:991px){
+    header{
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
+@media(max-width:530px){
+    header .logo{
+        font-size: min(1.7rem, 5.2vw);
+    }
 }

@@ -14,6 +14,13 @@ navlist.addEventListener("click",()=>{
     document.body.classList.remove("open");
 })
 
+// tapping the dimmed page behind the open menu closes it too
+document.querySelector(".overlay").addEventListener("click",()=>{
+    navlist.classList.remove("active");
+    menuIcon.classList.remove("active");
+    document.body.classList.remove("open");
+})
+
 
 
 // rotate text js code 
@@ -172,8 +179,12 @@ function skillsCounter(){
 
 // side progress bar 
 
+let scrollProgress = document.getElementById("progress");
+scrollProgress.addEventListener("click",()=>{
+    document.documentElement.scrollTop = 0;
+});
+
 let calcScrollValue = ()=>{
-    let scrollProgress = document.getElementById("progress");
     let pos = document.documentElement.scrollTop;
 
     let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -184,10 +195,6 @@ let calcScrollValue = ()=>{
     }else{
         scrollProgress.style.display = "none";
     }
-
-    scrollProgress.addEventListener("click",()=>{
-        document.documentElement.scrollTop = 0;
-    });
 
     scrollProgress.style.background = `conic-gradient(#fff ${scrollValue}%,#e6006d ${scrollValue}%)`;
 };
@@ -204,8 +211,11 @@ let section = document.querySelectorAll('section');
 function activeMenu(){
     let len = section.length;
     while(--len && window.scrollY + 97 < section[len].offsetTop){}
+    // match by id: not every section has its own menu item
+    let current = document.querySelector('header ul li a[href="#' + section[len].id + '"]');
+    if(!current) return;
     menuLi.forEach(sec => sec.classList.remove("active"));
-    menuLi[len].classList.add("active");
+    current.classList.add("active");
 }
 activeMenu();
 window.addEventListener("scroll",activeMenu);
@@ -219,24 +229,75 @@ ScrollReveal({
     // reset: true ,
 });
 
-ScrollReveal().reveal('.hero-info,.main-text,.proposal,.heading', { origin: "top" });
+// the hero is revealed in hidePreloader, so its entrance isn't hidden behind the loader
+ScrollReveal().reveal('.main-text,.proposal,.heading', { origin: "top" });
 ScrollReveal().reveal('.about-img,.fillter-buttons,.contact-info', { origin: "left" });
 ScrollReveal().reveal('.about-content,.skills', { origin: "right" });
 ScrollReveal().reveal('.international-student,.student-img', { origin: "top" });
-ScrollReveal().reveal('.allServices,.portfolio-gallery,.blog-box,footer,.img-hero', { origin: "bottom" });
+ScrollReveal().reveal('.portfolio-gallery,.blog-box,footer', { origin: "bottom" });
 ScrollReveal().reveal('.container', { origin: "bottom", interval: 200 });
+// service cards rise one after another; each icon ring turns once as its card arrives
+ScrollReveal().reveal('.servicesItem', {
+    origin: "bottom",
+    interval: 150,
+    beforeReveal: (card) => card.classList.add("in-view"),
+});
 
 
-    //preloader
+// decorative shapes drift a little as their section scrolls past
+let shapes = document.querySelectorAll('.about-img .showcase-ring img, .services .showcase img, .blog .showcase img');
+let shapesQueued = false;
+
+function driftShapes(){
+    shapesQueued = false;
+    shapes.forEach((shape, index) => {
+        let home = shape.closest('section').getBoundingClientRect();
+        if(home.bottom < 0 || home.top > window.innerHeight) return;
+        // 0 when the section is centred on screen, about 1 when it is a full screen above the centre
+        let passed = (window.innerHeight / 2 - (home.top + home.height / 2)) / window.innerHeight;
+        // neighbouring shapes move in opposite directions and by different amounts
+        let reach = (index % 2 ? -1 : 1) * (30 + (index % 3) * 20);
+        shape.style.transform = 'translate3d(0,' + (passed * reach).toFixed(1) + 'px,0)';
+    });
+}
+
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    window.addEventListener("scroll",()=>{
+        if(shapesQueued) return;
+        shapesQueued = true;
+        requestAnimationFrame(driftShapes);
+    });
+    driftShapes();
+}
+
+
+    //preloader: wait for the hero photo only, not for every image on the page
 var loader = document.getElementById("preloader");
 
-window.addEventListener("load", function(){
+function hidePreloader(){
+    if(loader.classList.contains("fade-out")) return;
     loader.classList.add("fade-out");
+    document.body.classList.remove("loading");
 
     setTimeout(() => {
         loader.style.display = "none";
     }, 600); 
-});
+
+    // hero comes in as the loader clears: text line by line, then the photo
+    ScrollReveal().reveal('.hero-info > *', { origin: "bottom", distance: "40px", interval: 150 });
+    ScrollReveal().reveal('.img-hero', { origin: "bottom", delay: 500 });
+    document.querySelector(".bg-icon").classList.add("in-view");
+}
+
+let heroImg = document.querySelector(".img-hero img");
+if(heroImg.complete){
+    hidePreloader();
+}else{
+    heroImg.addEventListener("load", hidePreloader);
+    heroImg.addEventListener("error", hidePreloader);
+}
+window.addEventListener("load", hidePreloader);
+setTimeout(hidePreloader, 4000); // never hold a slow connection hostage
 
 
 // Student
